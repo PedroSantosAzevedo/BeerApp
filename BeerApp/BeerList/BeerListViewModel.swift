@@ -29,9 +29,11 @@ class BeerListViewModel{
         BeerService.getBeers(page: pagination) { (beerList) in
             
             self.beers.append(contentsOf: beerList)
-            self.beerStatus.value = beerList.count == 0 ? .noResults : .loaded
             self.isLoadingMoreBeer = false
             self.pagination += 1
+            self.beerStatus.value = beerList.count == 0 ? .noResults : .loaded
+            
+            
             
         } failure: { (errorString) in
             

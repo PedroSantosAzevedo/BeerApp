@@ -10,6 +10,16 @@ import UIKit
 
 class BeerListView:UIView{
     
+    lazy var tableView:UITableView = {
+        let tableView = UITableView()
+        addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(BeerListTableViewCell.self, forCellReuseIdentifier: BeerListTableViewCell.reusableIdentifier)
+        tableView.estimatedRowHeight = 200
+        tableView.backgroundColor = .black
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame:frame)
         
@@ -27,6 +37,10 @@ class BeerListView:UIView{
     
     private func setContraints(){
         
+        self.tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        self.tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        self.tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        self.tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
     
 }
