@@ -24,7 +24,7 @@ class BeerService {
     
     static func getBeers(page: Int, success: @escaping ( [Beer])->Void,
                          failure: @escaping (String?)->Void) {
-        performRequest(route: BeerListEndpoint()) { response in
+        performRequest(route: BeerListEndpoint(pagination: page)) { response in
             if response?.error == nil {
                 if let data = response?.data, let utf8Text = String(data: data, encoding: .utf8) {
                     

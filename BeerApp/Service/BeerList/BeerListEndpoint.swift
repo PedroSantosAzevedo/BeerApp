@@ -17,6 +17,11 @@ class BeerListEndpoint:APIConfiguration{
     
     var parameters: Parameters? = nil
     
+    init(pagination:Int){
+        self.path = "beers?page=\(pagination)&per_page=15"
+    }
+    
+    
     func asURLRequest() throws -> URLRequest {
         
         let url = NetworkInfo.ProductionServer.baseURL + path
