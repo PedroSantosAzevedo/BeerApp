@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  BeerListViewController.swift
 //  BeerApp
 //
 //  Created by Pedro Azevedo on 23/01/21.
@@ -7,12 +7,15 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class BeerListViewController: UIViewController {
+    
+    var listView:BeerListView {return self.view as! BeerListView}
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view = BeerListView()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .purple
+        
     }
 
 
