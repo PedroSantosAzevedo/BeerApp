@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainViewController = BeerListViewController()
         
         let navigationController = UINavigationController(rootViewController: mainViewController)
-        
+
+        navigationController.navigationBar.barStyle = .black
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         

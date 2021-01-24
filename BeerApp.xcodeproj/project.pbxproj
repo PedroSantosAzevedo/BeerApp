@@ -28,6 +28,7 @@
 		13EE6F8125BC949C001AB6A9 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE6F8025BC949C001AB6A9 /* UIView+Extensions.swift */; };
 		13EE6F8825BD04EA001AB6A9 /* BeerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE6F8725BD04EA001AB6A9 /* BeerDetailViewController.swift */; };
 		13EE6F8D25BD052E001AB6A9 /* BeerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE6F8C25BD052E001AB6A9 /* BeerDetailView.swift */; };
+		13EE6F9B25BDD2CF001AB6A9 /* ImageAndLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EE6F9A25BDD2CE001AB6A9 /* ImageAndLabelView.swift */; };
 		1D42358B818C84A9897E8C20 /* Pods_BeerApp_BeerAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E57B2348446D6F0109849A /* Pods_BeerApp_BeerAppUITests.framework */; };
 		213D6F7B92CE782411CBA40C /* Pods_BeerAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA79F0CB2A9A6C0606301FA /* Pods_BeerAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		13EE6F8025BC949C001AB6A9 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		13EE6F8725BD04EA001AB6A9 /* BeerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailViewController.swift; sourceTree = "<group>"; };
 		13EE6F8C25BD052E001AB6A9 /* BeerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailView.swift; sourceTree = "<group>"; };
+		13EE6F9A25BDD2CE001AB6A9 /* ImageAndLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAndLabelView.swift; sourceTree = "<group>"; };
 		29E57B2348446D6F0109849A /* Pods_BeerApp_BeerAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerApp_BeerAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39821F87811D6E3B9CFA7ECC /* Pods-BeerApp-BeerAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeerApp-BeerAppUITests.release.xcconfig"; path = "Target Support Files/Pods-BeerApp-BeerAppUITests/Pods-BeerApp-BeerAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3FA79F0CB2A9A6C0606301FA /* Pods_BeerAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeerAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,10 +249,19 @@
 		13EE6F8625BD04C5001AB6A9 /* BeerDetail */ = {
 			isa = PBXGroup;
 			children = (
+				13EE6F9925BDD2A5001AB6A9 /* ComplimentaryViews */,
 				13EE6F8725BD04EA001AB6A9 /* BeerDetailViewController.swift */,
 				13EE6F8C25BD052E001AB6A9 /* BeerDetailView.swift */,
 			);
 			path = BeerDetail;
+			sourceTree = "<group>";
+		};
+		13EE6F9925BDD2A5001AB6A9 /* ComplimentaryViews */ = {
+			isa = PBXGroup;
+			children = (
+				13EE6F9A25BDD2CE001AB6A9 /* ImageAndLabelView.swift */,
+			);
+			path = ComplimentaryViews;
 			sourceTree = "<group>";
 		};
 		49F20C65A1ED31F179919CED /* Pods */ = {
@@ -519,6 +530,7 @@
 				13EE6F4C25BC76D8001AB6A9 /* Box.swift in Sources */,
 				13EE6F5825BC7A94001AB6A9 /* NetworkInfo.swift in Sources */,
 				13EE6F6925BC7CBB001AB6A9 /* BeerService.swift in Sources */,
+				13EE6F9B25BDD2CF001AB6A9 /* ImageAndLabelView.swift in Sources */,
 				13EE6DEA25BC73F5001AB6A9 /* Beer.swift in Sources */,
 				13EE6F5D25BC7ADD001AB6A9 /* APIConfiguration.swift in Sources */,
 				13EE6D7425BC6489001AB6A9 /* AppDelegate.swift in Sources */,

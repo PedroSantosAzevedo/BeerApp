@@ -26,6 +26,7 @@ class BeerListViewController: UIViewController {
         self.viewModel = BeerListViewModel()
         setDelegates()
         setBindings()
+        setTitle()
         
     }
     
@@ -39,6 +40,10 @@ class BeerListViewController: UIViewController {
     private func setDelegates(){
         listView.tableView.dataSource = self
         listView.tableView.delegate = self
+    }
+    
+    private func setTitle(){
+        self.navigationItem.title = "Beer List"
     }
     
     

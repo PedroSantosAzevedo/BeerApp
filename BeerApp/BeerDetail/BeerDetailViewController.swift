@@ -13,17 +13,20 @@ class BeerDetailViewController:UIViewController{
     var beer:Beer!
     
     var detailView:BeerDetailView {return self.view as! BeerDetailView}
-//    var viewModel:BeerListViewModel!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.view = BeerDetailView()
-//        self.viewModel = BeerListViewModel()
-     
+        detailView.setUp(beer: beer)
+        setTitle()
+        
         
     }
     
+    private func setTitle(){
+        self.navigationItem.title = beer.name
+    }
     
     
 }
