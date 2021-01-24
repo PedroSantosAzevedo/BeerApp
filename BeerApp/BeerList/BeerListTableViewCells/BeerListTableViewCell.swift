@@ -18,12 +18,14 @@ class BeerListTableViewCell:UITableViewCell{
     
     //MARK:- Views
     
+    let purpleColor:UIColor = UIColor.init(displayP3Red: 120/255, green: 29/255, blue: 38/255, alpha: 1)
+ 
     lazy var containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.roundCorner(radius: 4)
-        view.borderWithColor(.yellow, width: 20)
+        view.borderWithColor(purpleColor, width: 20)
         contentView.addSubview(view)
         return view
     }()
@@ -41,9 +43,9 @@ class BeerListTableViewCell:UITableViewCell{
     lazy var textContainerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .brown
+        view.backgroundColor = purpleColor
         view.roundCorner(radius: 4)
-        view.borderWithColor(.brown, width: 4)
+//        view.borderWithColor(.brown, width: 4)
         containerView.addSubview(view)
         return view
     }()

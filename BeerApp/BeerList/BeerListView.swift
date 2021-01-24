@@ -10,13 +10,24 @@ import UIKit
 
 class BeerListView:UIView{
     
+    
+    lazy var backgroundImage:UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named:"listBackground")
+        addSubview(image)
+        return image
+    }()
+    
+    
     lazy var tableView:UITableView = {
         let tableView = UITableView()
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(BeerListTableViewCell.self, forCellReuseIdentifier: BeerListTableViewCell.reusableIdentifier)
         tableView.estimatedRowHeight = 200
-        tableView.backgroundColor = .black
+        tableView.layer.zPosition = 10000
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -36,6 +47,12 @@ class BeerListView:UIView{
     
     
     private func setContraints(){
+        
+        
+        self.backgroundImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        self.backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        self.backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        self.backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         self.tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true

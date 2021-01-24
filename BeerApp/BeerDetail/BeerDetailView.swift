@@ -10,11 +10,20 @@ import UIKit
 
 class BeerDetailView:UIView{
     
-    var imageHeight = UIScreen.main.bounds.width * 3/4
+    var imageHeight = UIScreen.main.bounds.width * 3/4 * 1.5
+    
+    lazy var backgroundImage:UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named:"listBackground")
+        addSubview(image)
+        return image
+    }()
     
     lazy var scrollView:UIScrollView = {
         let view = UIScrollView()
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
+        view.layer.zPosition = 1000
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -94,6 +103,7 @@ class BeerDetailView:UIView{
     private func setBitterness(for beer:Beer){
         guard let bitterness = beer.bitterness else {return}
         let imageAndLabelView = ImageAndLabelView(imageName: "", title: String(bitterness))
+        imageAndLabelView.backgroundColor = .clear
         stackView.addArrangedSubview(imageAndLabelView)
         imageAndLabelView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -114,6 +124,8 @@ class BeerDetailView:UIView{
     private func setAlcoholPercent(for beer:Beer){
         guard let alcohol = beer.alcoholPercentage else {return}
         let imageAndLabelView = ImageAndLabelView(imageName: "", title: String(alcohol))
+        imageAndLabelView.backgroundColor = .clear
+
         stackView.addArrangedSubview(imageAndLabelView)
         imageAndLabelView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -125,6 +137,11 @@ class BeerDetailView:UIView{
     
     private func setConstraints(){
         
+        self.backgroundImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        self.backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        self.backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        self.backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
         scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -135,7 +152,7 @@ class BeerDetailView:UIView{
         stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         
-        beerImage.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        beerImage.topAnchor.constraint(equalTo: stackView.topAnchor,constant:32).isActive = true
         beerImage.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         beerImage.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         beerImage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
