@@ -91,6 +91,15 @@ extension BeerListViewController:UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == TableViewSection.Beers.rawValue{
+            let beer = viewModel.beers[indexPath.row]
+            let vc = BeerDetailViewController()
+            vc.beer = beer
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
