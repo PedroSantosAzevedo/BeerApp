@@ -21,9 +21,9 @@ class BeerListTableViewCell:UITableViewCell{
     lazy var containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         view.roundCorner(radius: 4)
-        view.borderWithColor(.yellow, width: 2)
+        view.borderWithColor(.yellow, width: 20)
         contentView.addSubview(view)
         return view
     }()
@@ -128,16 +128,16 @@ extension BeerListTableViewCell{
         self.containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -16).isActive = true
         self.containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -16).isActive = true
         
-        self.beerImage.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        self.beerImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        self.beerImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        self.beerImage.topAnchor.constraint(equalTo: containerView.topAnchor,constant:24).isActive = true
+        self.beerImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant:16).isActive = true
+        self.beerImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,constant:-16).isActive = true
         self.beerImage.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
         
         
         self.textContainerView.topAnchor.constraint(equalTo: beerImage.bottomAnchor).isActive = true
-        self.textContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant: 3).isActive = true
-        self.textContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,constant: -3).isActive = true
-        self.textContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: -2).isActive = true
+        self.textContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant: 16).isActive = true
+        self.textContainerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor,constant: -16).isActive = true
+        self.textContainerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor,constant: -16).isActive = true
         
         
         self.titleLabel.topAnchor.constraint(equalTo: textContainerView.topAnchor,constant: 16).isActive = true
