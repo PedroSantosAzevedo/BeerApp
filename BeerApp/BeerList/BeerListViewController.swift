@@ -91,6 +91,15 @@ extension BeerListViewController:UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        if offsetY > contentHeight - scrollView.frame.height {
+          
+            self.viewModel.getBeerList()
+        }
+    }
+    
     
 }
 
@@ -99,10 +108,14 @@ extension BeerListViewController{
     private func setView(with status:ViewStatus){
         switch status{
         case .loading:
+            listView.tableView.reloadData()
             debugPrint("loading")
         case .loaded:
             listView.tableView.reloadData()
             debugPrint("loaded")
+        case .loadingMore:
+            listView.tableView.reloadData()
+            debugPrint("loadingMore")
         case .error(let errorString):
             debugPrint("error: " + errorString )
         default:

@@ -97,7 +97,7 @@ class BeerListTableViewCell:UITableViewCell{
 
     private func getImage(for beer:Beer){
 
-        let imageString = beer.image
+        guard let imageString = beer.image else {return}
         guard let imageUrl = URL(string: imageString) else {return}
         self.beerImage.kf.indicatorType = .activity
         self.beerImage.kf.setImage(with: imageUrl)
@@ -105,12 +105,14 @@ class BeerListTableViewCell:UITableViewCell{
     }
     
     private func getTitle(for beer:Beer){
-//        self.titleLabel.text = beer.name
-        self.titleLabel.text = "init(coder:) has not been implementedinit(coder:) has not been implemented"
+        guard let name = beer.name else {return}
+        self.titleLabel.text = name
+
     }
     
     private func getAlcohol(for beer:Beer){
-        self.alcoholLabel.text = "\(beer.alcoholPercentage)%"
+        guard let alcohol = beer.alcoholPercentage else {return}
+        self.alcoholLabel.text = "\(alcohol)%"
         
     }
 }

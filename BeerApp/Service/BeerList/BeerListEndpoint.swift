@@ -13,7 +13,7 @@ class BeerListEndpoint:APIConfiguration{
     
     var method: HTTPMethod = .get
     
-    var path: String = "beers?page=2&per_page=80"
+    var path: String
     
     var parameters: Parameters? = nil
     

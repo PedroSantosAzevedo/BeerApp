@@ -10,12 +10,12 @@ import Foundation
 
 class Beer:Codable{
    
-    let image:String
-    let name:String
-    let alcoholPercentage:Double
-    let tagline:String
-    let bitterness:Double
-    let description:String
+    let image:String?
+    let name:String?
+    let alcoholPercentage:Double?
+    let tagline:String?
+    let bitterness:Double?
+    let description:String?
     
     
     enum CodingKeys:String,CodingKey{
