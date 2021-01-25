@@ -1,13 +1,11 @@
 PODS:
-  - Alamofire (5.0.5)
-  - Kingfisher (5.15.8):
-    - Kingfisher/Core (= 5.15.8)
-  - Kingfisher/Core (5.15.8)
+  - Alamofire (5.4.1)
+  - Kingfisher (6.0.1)
   - MarqueeLabel (4.0.5)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.0.0-rc.3)
-  - Kingfisher (~> 5.11)
+  - Alamofire
+  - Kingfisher
   - MarqueeLabel
 
 SPEC REPOS:
@@ -17,10 +15,10 @@ SPEC REPOS:
     - MarqueeLabel
 
 SPEC CHECKSUMS:
-  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
-  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Kingfisher: adde87a4f74f6a3845395769354efff593581740
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
 
-PODFILE CHECKSUM: b8fa177a4baba14eb1be6f66b0705c91e533945d
+PODFILE CHECKSUM: c3b1001b7fbaf0771f6b3be34375e70b71752931
 
 COCOAPODS: 1.10.0
