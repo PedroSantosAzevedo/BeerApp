@@ -25,6 +25,7 @@ class BeerListView:UIView{
         addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(BeerListTableViewCell.self, forCellReuseIdentifier: BeerListTableViewCell.reusableIdentifier)
+        tableView.register(LoadingTableViewCell.self, forCellReuseIdentifier: LoadingTableViewCell.reusableIdentifier)
         tableView.estimatedRowHeight = 200
         tableView.layer.zPosition = 10000
         tableView.separatorStyle = .none

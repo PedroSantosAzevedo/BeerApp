@@ -77,9 +77,8 @@ extension BeerListViewController:UITableViewDelegate,UITableViewDataSource{
             cell.setUp(beer: viewModel.beers[indexPath.row])
             return cell
         case TableViewSection.Loading.rawValue:
-            let cell = UITableViewCell()
-            cell.selectionStyle = .none
-            cell.backgroundColor = .red
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadingTableViewCell.reusableIdentifier, for: indexPath) as! LoadingTableViewCell
+            cell.setUp()
             return cell
         default:
             let cell = UITableViewCell()

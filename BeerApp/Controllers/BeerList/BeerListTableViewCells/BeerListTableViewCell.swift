@@ -20,13 +20,14 @@ class BeerListTableViewCell:UITableViewCell{
     
 
  
-    let purpleColor:UIColor = UIColor.init(displayP3Red: 214/255, green: 179/255, blue: 90/255, alpha: 1)
+   
+    
     lazy var containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         view.roundCorner(radius: 4)
-        view.borderWithColor(purpleColor, width: 20)
+        view.borderWithColor(Theme.getColot(color: .Yellow), width: 20)
         contentView.addSubview(view)
         return view
     }()
@@ -44,9 +45,8 @@ class BeerListTableViewCell:UITableViewCell{
     lazy var textContainerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = purpleColor
+        view.backgroundColor = Theme.getColot(color: .Yellow)
         view.roundCorner(radius: 4)
-//        view.borderWithColor(.brown, width: 4)
         containerView.addSubview(view)
         return view
     }()
@@ -57,11 +57,21 @@ class BeerListTableViewCell:UITableViewCell{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.textColor = .white
-        label.font = label.font.withSize(18)
+        label.font = Theme.getFont(font: .Bohemian, size: .Default)
         label.adjustsFontSizeToFitWidth = true
         label.type = .left
         textContainerView.addSubview(label)
         return label
+    }()
+    
+    lazy var alcoholImage:UIImageView = {
+        let image = UIImageView()
+        image.backgroundColor = .clear
+        image.tintColor = .white
+        image.image = UIImage(named: "alcoholPercent")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        textContainerView.addSubview(image)
+        return image
     }()
     
     lazy var alcoholLabel:UILabel = {
@@ -72,7 +82,7 @@ class BeerListTableViewCell:UITableViewCell{
         label.numberOfLines = 5
         label.lineBreakMode = .byTruncatingHead
         label.textColor = .white
-        label.font = label.font.withSize(17)
+        label.font = Theme.getFont(font: .Default, size: .Default)
         label.adjustsFontSizeToFitWidth = true
         textContainerView.addSubview(label)
         return label
@@ -147,9 +157,17 @@ extension BeerListTableViewCell{
         self.titleLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor,constant: 16).isActive = true
         self.titleLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor,constant: -16).isActive = true
         
-        self.alcoholLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 8).isActive = true
-        self.alcoholLabel.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor,constant: 16).isActive = true
-        self.alcoholLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor,constant: -16).isActive = true
-        self.alcoholLabel.bottomAnchor.constraint(equalTo: textContainerView.bottomAnchor,constant: -16).isActive = true
+        alcoholImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 16).isActive = true
+        alcoholImage.leadingAnchor.constraint(equalTo: textContainerView.leadingAnchor,constant: 16).isActive = true
+        alcoholImage.bottomAnchor.constraint(equalTo: textContainerView.bottomAnchor,constant: -16).isActive = true
+        alcoholImage.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        alcoholImage.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        
+
+        self.alcoholLabel.centerYAnchor.constraint(equalTo: alcoholImage.centerYAnchor).isActive = true
+        self.alcoholLabel.leadingAnchor.constraint(equalTo: alcoholImage.trailingAnchor,constant: 4).isActive = true
+        self.alcoholLabel.trailingAnchor.constraint(equalTo: textContainerView.trailingAnchor,constant: -8).isActive = true
+
     }
 }

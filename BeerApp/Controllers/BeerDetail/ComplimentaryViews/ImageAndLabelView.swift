@@ -25,7 +25,7 @@ class ImageAndLabelView:UIView{
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .clear
         label.textColor = .black
-        label.font = label.font.withSize(18)
+        label.font = Theme.getFont(font: .Default, size: .Default)
         label.adjustsFontSizeToFitWidth = true
         label.type = .left
         addSubview(label)
