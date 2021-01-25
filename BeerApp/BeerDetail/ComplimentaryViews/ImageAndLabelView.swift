@@ -13,7 +13,8 @@ class ImageAndLabelView:UIView{
     
     lazy var imageView:UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .red
+        image.backgroundColor = .clear
+        image.tintColor = .black
         image.translatesAutoresizingMaskIntoConstraints = false
         addSubview(image)
         return image

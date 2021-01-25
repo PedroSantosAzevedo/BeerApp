@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MarqueeLabel
 
 class BeerDetailView:UIView{
     
@@ -48,19 +49,48 @@ class BeerDetailView:UIView{
         return image
     }()
     
+    lazy var titleLabel:MarqueeLabel = {
+        let label = MarqueeLabel(frame: .zero, duration: 6, fadeLength: 5)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = label.font.withSize(18)
+        label.adjustsFontSizeToFitWidth = true
+        label.type = .left
+        return label
+    }()
+    
     lazy var descriptionHolder:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(view)
         return view
+    }()
+    
+    lazy var taglineLabel:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.textColor = .black
+        label.numberOfLines = 0
+        scrollView.addSubview(label)
+        label.font = label.font.withSize(18)
+        
+        return label
     }()
 
     
     lazy var descriptionLabel:UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .white
-        descriptionHolder.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.textColor = .black
+        label.numberOfLines = 0
+        descriptionHolder.addSubview(label)
+        label.font = label.font.withSize(18)
+        
         return label
     }()
     
@@ -81,6 +111,8 @@ class BeerDetailView:UIView{
     
     
     func setUp(beer:Beer){
+
+        setTitle(for: beer)
         setImage(for: beer)
         setBitterness(for: beer)
         setAlcoholPercent(for: beer)
@@ -89,6 +121,15 @@ class BeerDetailView:UIView{
         
     }
     
+    func setHierarquy(){
+        
+    }
+    
+    private func setTitle(for beer:Beer){
+        guard let beerName = beer.name else {return}
+        self.titleLabel.text = beerName
+        stackView.addArrangedSubview(titleLabel)
+    }
     
     private func setImage(for beer:Beer){
         guard let imageString = beer.image else {return}
@@ -102,7 +143,8 @@ class BeerDetailView:UIView{
     
     private func setBitterness(for beer:Beer){
         guard let bitterness = beer.bitterness else {return}
-        let imageAndLabelView = ImageAndLabelView(imageName: "", title: String(bitterness))
+        let imageAndLabelView = ImageAndLabelView(imageName: "hop", title: String(bitterness))
+        
         imageAndLabelView.backgroundColor = .clear
         stackView.addArrangedSubview(imageAndLabelView)
         imageAndLabelView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,14 +158,13 @@ class BeerDetailView:UIView{
         guard let beerDescription = beer.description else {return}
        
         descriptionLabel.text = beerDescription
-        
-        stackView.addArrangedSubview(descriptionHolder)
+
         
     }
     
     private func setAlcoholPercent(for beer:Beer){
         guard let alcohol = beer.alcoholPercentage else {return}
-        let imageAndLabelView = ImageAndLabelView(imageName: "", title: String(alcohol))
+        let imageAndLabelView = ImageAndLabelView(imageName: "alcoholPercent", title: String(alcohol))
         imageAndLabelView.backgroundColor = .clear
 
         stackView.addArrangedSubview(imageAndLabelView)
@@ -150,7 +191,7 @@ class BeerDetailView:UIView{
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+
         
         beerImage.topAnchor.constraint(equalTo: stackView.topAnchor,constant:32).isActive = true
         beerImage.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
@@ -158,14 +199,22 @@ class BeerDetailView:UIView{
         beerImage.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         beerImage.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
         
+        titleLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        
         descriptionLabel.topAnchor.constraint(equalTo:descriptionHolder.topAnchor ).isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: descriptionHolder.leadingAnchor).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: descriptionHolder.trailingAnchor).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: descriptionHolder.leadingAnchor,constant: 16).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: descriptionHolder.trailingAnchor,constant: -16).isActive = true
         descriptionLabel.bottomAnchor.constraint(equalTo:descriptionHolder.bottomAnchor ).isActive = true
+        descriptionLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        descriptionLabel.layoutIfNeeded()
         
-        
-        descriptionHolder.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        descriptionHolder.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+
+            
+        descriptionHolder.topAnchor.constraint(equalTo: stackView.bottomAnchor,constant: 8).isActive = true
+        descriptionHolder.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        descriptionHolder.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        descriptionHolder.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     
         stackView.layoutIfNeeded()
         

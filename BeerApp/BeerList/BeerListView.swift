@@ -27,6 +27,7 @@ class BeerListView:UIView{
         tableView.register(BeerListTableViewCell.self, forCellReuseIdentifier: BeerListTableViewCell.reusableIdentifier)
         tableView.estimatedRowHeight = 200
         tableView.layer.zPosition = 10000
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         return tableView
     }()
