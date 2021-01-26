@@ -130,26 +130,35 @@ class BeerDetailView:UIView{
 
     
     private func setTitle(for beer:Beer){
-        guard let beerName = beer.name else {return}
+        guard let beerName = beer.name else {
+            self.titleLabel.isHidden = true
+            return}
         self.titleLabel.text = beerName
         
     }
     
     
     private func setTagline(for beer:Beer){
-        guard let beerTagline = beer.tagline else {return}
+        guard let beerTagline = beer.tagline else {
+            self.taglineLabel.isHidden = true
+            return}
         self.taglineLabel.text = beerTagline
         
     }
     
     private func setImage(for beer:Beer){
-        guard let imageString = beer.image else {return}
+    
+        guard let imageString = beer.image else {
+            self.beerImage.image = UIImage(named:"beerIcon")
+            self.beerImage.tintColor = .black
+            return}
         guard let imageUrl = URL(string: imageString) else {return}
         self.beerImage.kf.indicatorType = .activity
         self.beerImage.kf.setImage(with: imageUrl)
     }
     
     private func setBitterness(for beer:Beer){
+        
         guard let bitterness = beer.bitterness else {return}
         let imageAndLabelView = ImageAndLabelView(imageName: "hop", title: String(bitterness))
         
@@ -163,7 +172,9 @@ class BeerDetailView:UIView{
     }
     
     private func setDescription(for beer:Beer){
-        guard let beerDescription = beer.description else {return}
+        guard let beerDescription = beer.description else {
+            descriptionLabel.isHidden = true
+            return}
        
         descriptionLabel.text = beerDescription
 
@@ -171,7 +182,7 @@ class BeerDetailView:UIView{
     
     private func setAlcoholPercent(for beer:Beer){
         guard let alcohol = beer.alcoholPercentage else {return}
-        let imageAndLabelView = ImageAndLabelView(imageName: "alcoholPercent", title: String(alcohol))
+        let imageAndLabelView = ImageAndLabelView(imageName: "alcoholPercent", title: String(alcohol) + " %")
         imageAndLabelView.backgroundColor = .clear
 
         stackView.addArrangedSubview(imageAndLabelView)
