@@ -19,9 +19,6 @@ class BeerListTableViewCell:UITableViewCell{
     //MARK:- Views
     
 
- 
-   
-    
     lazy var containerView:UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false

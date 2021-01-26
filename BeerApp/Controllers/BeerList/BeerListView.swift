@@ -20,6 +20,37 @@ class BeerListView:UIView{
     }()
     
     
+    lazy var errorLabel:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .clear
+        label.minimumScaleFactor = 0.6
+        label.numberOfLines = 5
+        label.lineBreakMode = .byTruncatingHead
+        label.textColor = .black
+        label.textAlignment = .center
+        label.isHidden = true
+        label.text = "Algo inesperado aconteceu"
+        label.font = Theme.getFont(font: .Bohemian, size: .Title)
+        
+        addSubview(label)
+        return label
+    }()
+    
+    lazy var reloadButton:UIButton = {
+        let button = UIButton()
+        button.setTitle("Tentar novamente", for: .normal)
+        button.tintColor = .black
+        button.backgroundColor = UIColor.white.withAlphaComponent(0.6)
+        button.setTitleColor(.black, for: .normal)
+        button.isHidden = true
+        button.bringSubviewToFront(backgroundImage)
+        button.borderWithColor(.black, width: 2)
+        addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     lazy var tableView:UITableView = {
         let tableView = UITableView()
         addSubview(tableView)
@@ -55,6 +86,18 @@ class BeerListView:UIView{
         self.backgroundImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         self.backgroundImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         self.backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        self.reloadButton.centerXAnchor.constraint(equalTo:backgroundImage.centerXAnchor ).isActive = true
+        self.reloadButton.centerYAnchor.constraint(equalTo:backgroundImage.centerYAnchor ).isActive = true
+        self.reloadButton.heightAnchor.constraint(equalToConstant: 72).isActive = true
+        self.reloadButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 3/4).isActive = true
+        
+        
+        self.errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        self.errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        self.errorLabel.bottomAnchor.constraint(equalTo:reloadButton.topAnchor,constant: -16 ).isActive = true
+        self.errorLabel.centerXAnchor.constraint(equalTo:backgroundImage.centerXAnchor ).isActive = true
+        
         
         self.tableView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         self.tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true

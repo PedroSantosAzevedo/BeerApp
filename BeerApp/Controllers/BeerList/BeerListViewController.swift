@@ -26,6 +26,7 @@ class BeerListViewController: UIViewController {
         self.viewModel = BeerListViewModel()
         setDelegates()
         setBindings()
+        addTargets()
         setTitle()
         
     }
@@ -46,6 +47,13 @@ class BeerListViewController: UIViewController {
         self.navigationItem.title = "Beer List"
     }
     
+    private func addTargets(){
+        listView.reloadButton.addTarget(self, action: #selector(reload), for: .touchUpInside)
+    }
+    
+    @objc func reload(){
+        self.viewModel.getBeerList()
+    }
     
 }
 
@@ -119,17 +127,29 @@ extension BeerListViewController:UITableViewDelegate,UITableViewDataSource{
 //MARK:- ViewStatus
 extension BeerListViewController{
     private func setView(with status:ViewStatus){
+        
+ 
+        
         switch status{
         case .loading:
             listView.tableView.reloadData()
             debugPrint("loading")
         case .loaded:
+            listView.reloadButton.isHidden = true
+            listView.tableView.isHidden = false
+            listView.errorLabel.isHidden = true
             listView.tableView.reloadData()
             debugPrint("loaded")
         case .loadingMore:
+            listView.reloadButton.isHidden = true
+            listView.tableView.isHidden = false
+            listView.errorLabel.isHidden = true
             listView.tableView.reloadData()
             debugPrint("loadingMore")
         case .error(let errorString):
+            listView.reloadButton.isHidden = false
+            listView.errorLabel.isHidden = false
+            listView.tableView.isHidden = true
             debugPrint("error: " + errorString )
         default:
             debugPrint("[BeerListViewController]:No view Status")
